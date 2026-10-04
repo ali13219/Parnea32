@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>یک سؤال مهم 💍</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Tahoma, Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #f7e9ff);
+    }
+
+    .card {
+      width: 90%;
+      max-width: 560px;
+      padding: 45px 25px;
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 28px;
+      box-shadow: 0 18px 60px rgba(120,50,100,0.18);
+    }
+
+    h1 {
+      color: #7b245d;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #777;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    #buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      min-height: 150px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 15px 30px;
+      font-family: inherit;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    #yes {
+      background: #e83e78;
+      color: white;
+    }
+
+    #no {
+      background: #eee;
+      color: #555;
+    }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      color: #e83e78;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h1>پرنیا خانوم، با من ازدواج می‌کنی؟ 💍</h1>
+
+    <p>فقط یه جواب کوچولو می‌خوام... 😊</p>
+
+    <div id="buttons">
+      <button id="yes">بله ❤️</button>
+      <button id="no">خیر</button>
+    </div>
+
+    <div id="message">
+      می‌دونستم جواب درست همینه! 😍❤️
+    </div>
+
+  </div>
+
+
+  <script>
+
+    let noClicks = 0;
+
+    const yes = document.getElementById("yes");
+    const no = document.getElementById("no");
+    const message = document.getElementById("message");
+
+
+    // وقتی روی بله کلیک شود
+    yes.addEventListener("click", function () {
+
+      message.style.display = "block";
+
+      no.style.display = "none";
+
+      yes.textContent = "بله ❤️";
+
+    });
+
+
+    // وقتی روی خیر کلیک شود
+    no.addEventListener("click", function () {
+
+      noClicks++;
+
+      // بزرگ‌تر شدن بله
+      let yesSize = Math.min(20 + noClicks * 9, 100);
+
+      yes.style.fontSize = yesSize + "px";
+
+      yes.style.padding =
+        (15 + noClicks * 3) + "px " +
+        (30 + noClicks * 5) + "px";
+
+
+      // کوچک‌تر شدن خیر
+      let noSize = Math.max(20 - noClicks * 2, 0);
+
+      no.style.fontSize = noSize + "px";
+
+
+      // بعد از 10 بار، خیر کاملاً ناپدید شود
+      if (noClicks >= 10) {
+
+        no.style.display = "none";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
